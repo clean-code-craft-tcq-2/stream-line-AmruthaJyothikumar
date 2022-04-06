@@ -1,5 +1,4 @@
-void interpretTemperatureAndVoltageValuesFromSensors(parameterInfo tempInfo, parameterInfo voltInfo, int tempSensorValues[],
-	int VoltageSensorValues[], char* tempAndVoltValuesInCSV[], size_t numberOfSamples);
+
 
 float converttophysicalvalue(float resolution, int sensorvalue);
 void printtoconsoleTemp(float Temperature[], size_t numberOfSamples);
