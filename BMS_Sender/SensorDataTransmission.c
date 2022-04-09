@@ -2,23 +2,28 @@
 #include <string.h>
 #include "SensorDataTransmission.h"
 
-
 float Temperature[BMSDATA] = {};
-float StateOfCharge[BMSDATA] = {};
+float Voltage[BMSDATA] = {};
 
 int GetDatafromInputFile(char * filename, float *Temperature, float *Voltage)
 {  
-    FILE *filePointer ;
-    filePointer = fopen(filename, "r");    
-    return isFileOpenSuccess(filePointer) ? readDataAndSendToConsole(filePointer,Temperature,Voltage) : 0;
+    FILE *file ;
+    file = fopen(filename, "r");   
+    if (isFileOpenSuccess(file){
+        ReadDatafromInput(file,Temperature,Voltage);
+        return E_OK;
+    }
+    else{
+        return E_NOT_OK;
+    }
 }
 
-int isFileOpenSuccess(FILE *filePointer)
+int isFileOpenSuccess(FILE *file)
 {    
-    return ( filePointer == NULL ) ? 0 : 1;
+    return ( file == NULL ) ? 0 : 1;
 }
 
-int readDataAndSendToConsole(FILE *filePointer, float *Temperature, float *Voltage)
+int ReadDatafromInput(FILE *filePointer, float *Temperature, float *Voltage)
 {
     float Temp_data = 0,Voltage_data = 0;
     int i;  
