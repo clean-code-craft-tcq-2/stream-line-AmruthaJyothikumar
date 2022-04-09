@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 
 #include "test/catch.hpp"
-#include "SensorDataTransmisson.h"
+#include "SensorDataTransmission.h"
 #include <string.h>
 
 TEST_CASE("Read Sensor 1 Data"){
