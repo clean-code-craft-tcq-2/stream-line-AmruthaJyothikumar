@@ -6,9 +6,9 @@
 
 TEST_CASE("Read Sensor 1 Data"){
   int totalReadingsCaptured = 0;
-  float Temperature[50]={0};
-  float ChargeRate[50]={0};
-  char *filename = "./VoltageTemperatureInput.txt";
+  float Temperature[20]={0};
+  float Voltage[20]={0};
+  char *filename = "./BMS_Sender/VoltageTemperatureInput.txt";
   totalReadingsCaptured = GetDatafromInputFile(filename,&Temperature[0],&Voltage[0]);
   REQUIRE (totalReadingsCaptured == 50);
   }
