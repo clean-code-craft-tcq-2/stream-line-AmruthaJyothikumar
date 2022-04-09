@@ -6,20 +6,16 @@
 
 TEST_CASE("Check whether data read success"){
   char *filename = "./BMS_Sender/VoltageTemperatureInput.txt";
-  int totalReadingsCaptured;
   float Temperature[20] = {0};
   float Voltage[20] = {0};
-  totalReadingsCaptured = GetDatafromInputFile(filename,&Temperature[0],&Voltage[0]);
   REQUIRE(GetDatafromInputFile (filename,&Temperature[0],&Voltage[0]) == E_OK);
   }
 
 TEST_CASE("Check whether data read success Invalid file"){
   char *filename = "./BMS_Sender/Invalid.txt";
-  int totalReadingsCaptured;
   float Temperature[20] = {0};
   float Voltage[20] = {0};
-  totalReadingsCaptured = GetDatafromInputFile(filename,&Temperature[0],&Voltage[0]);
-  REQUIRE(GetDatafromInputFile (filename,&Temperature[0],&Voltage[0]) == E_OK);
+  REQUIRE(GetDatafromInputFile (filename,&Temperature[0],&Voltage[0]) == E_NOT_OK);
   }
 
 TEST_CASE("Check whether print to console is success"){
