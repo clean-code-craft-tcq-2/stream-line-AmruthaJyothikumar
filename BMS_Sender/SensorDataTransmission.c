@@ -23,21 +23,22 @@ int CheckFileOpenSuccess(FILE *file)
     return ( file == NULL ) ? 0 : 1;
 }
 
-int ReadDatafromInputText(FILE *filePointer, float *Temperature, float *Voltage)
+int ReadDatafromInputText(FILE *file, float *Temperature, float *Voltage)
 {
-    float Temp_data = 0,Voltage_data = 0;
+    float temperatureread = 0;
+    float voltageread = 0;
     int i;  
     for(i=0; i<BMSDATA; i++)
     {
-      fscanf(filePointer, "%f , %f \n", &Temp_data,&Voltage_data);
-      Temperature[i] = Temp_data;
-      Voltage[i] = Voltage_data;
+      fscanf(file, "%f , %f \n", &temperatureread,&voltageread);
+      Temperature[i] = temperatureread;
+      Voltage[i] = voltageread;
     }
-    fclose(filePointer);    
-    return sendDataToConsole(Temperature,Voltage);
+    fclose(file);    
+    return PrintToConsole(Temperature,Voltage);
 }
 
-int sendDataToConsole( float *Temperature, float *Voltage)
+int PrintToConsole( float *Temperature, float *Voltage)
 {
     for(int i=0;i<BMSDATA;i++)
     {
