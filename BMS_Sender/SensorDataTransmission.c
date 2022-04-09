@@ -13,9 +13,6 @@ int GetDatafromInputFile(char * filename, float *Temperature, float *Voltage)
         ReadDatafromInputText(file,Temperature,Voltage);
         return E_OK;
     }
-    else{
-        return E_NOT_OK;
-    }
 }
 
 int CheckFileOpenSuccess(FILE *file)
