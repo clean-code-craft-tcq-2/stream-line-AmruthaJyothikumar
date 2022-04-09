@@ -4,5 +4,5 @@
 
 extern int GetDatafromInputFile(char * filename, float *Temperature, float *Voltage);
 extern int CheckFileOpenSuccess(FILE *filePointer);
-extern int ReadDatafromInput(FILE *filePointer, float *Temperature, float *Voltage);
+extern int ReadDatafromInputText(FILE *filePointer, float *Temperature, float *Voltage);
 extern int sendDataToConsole( float *Temperature, float *Voltage);
