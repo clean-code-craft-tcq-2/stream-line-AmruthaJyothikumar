@@ -9,7 +9,7 @@ int GetDatafromInputFile(char * filename, float *Temperature, float *Voltage)
 {  
     FILE *file ;
     file = fopen(filename, "r");   
-    if (isFileOpenSuccess(file){
+    if (isFileOpenSuccess(file)){
         ReadDatafromInput(file,Temperature,Voltage);
         return E_OK;
     }
