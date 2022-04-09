@@ -3,47 +3,41 @@
 #include <string.h>
 #include "SensorDataTransmission.h"
 
-float converttophysicalvalue(float resolution, int sensorvalue)
-{
-  float physicalvalue;
-  physicalvalue = (sensorvalue*resolution);
-  return physicalvalue;
+#define BMSDATA 20
+float Temperature[BMSDATA] = {};
+float StateOfCharge[BMSDATA] = {};
+
+int GetDatafromInputFile(char * filename, float *Temperature, float *Voltage)
+{  
+    FILE *filePointer ;
+    filePointer = fopen(filename, "r");    
+    return isFileOpenSuccess(filePointer) ? readDataAndSendToConsole(filePointer,Temperature,Voltage) : 0;
 }
 
-void interpretParameterValues(float resolution, int sensorValues[], int* interpretedParameterValues, size_t numberOfSamples)
-{	
-	int maxIntValue, totalMeasurementRange, roundedOffValue;
-	float resolution, scalingFactor, interpretedValue;
-
-	for (size_t i=0; i<numberOfSamples; i++){
-		interpretedValue = converttophysicalvalue(resolution, sensorValues[i]);
-		ConvertedPhysicalValue[i] = interpretedValue;
-	}
+int isFileOpenSuccess(FILE *filePointer)
+{    
+    return ( filePointer == NULL ) ? 0 : 1;
 }
 
-void GetSensorValues(int tempsensorValues[], float tempresolution, int voltagesensorValues[], float voltresolution)
+int readDataAndSendToConsole(FILE *filePointer, float *Temperature, float *Voltage)
 {
-  	int interpretedTempValues[numberOfSamples];
-	  int interpretedVoltValues[numberOfSamples];
-  
-  	interpretParameterValues(tempresolution, tempSensorValues, interpretedTempValues, numberOfSamples);
-	  interpretParameterValues(voltresolution, voltageSensorValues, interpretedVoltValues, numberOfSamples);
-	  printtoconsoleTemp(interpretedTempValues, interpretedVoltValues,numberOfSamples);
-    printtoconsoleVoltage(interpretedTempValues, interpretedVoltValues,numberOfSamples);
-}
-
-void printtoconsoleTemp(float Temperature[],numberOfSamples)
-{
-    for(int i=0;i<numberOfSamples;i++)
+    float Temp_data = 0,Voltage_data = 0;
+    int i;  
+    for(i=0; i<BMSDATA; i++)
     {
-        printf("Temperature value is %f\n",Temperature[i]);
+      fscanf(filePointer, "%f , %f \n", &Temp_data,&Voltage_data);
+      Temperature[i] = Temp_data;
+      Voltage[i] = Voltage_data;
+    }
+    fclose(filePointer);    
+    return sendDataToConsole(Temperature,Voltage);
+}
+
+int sendDataToConsole( float *Temperature, float *Voltage)
+{
+    for(int i=0;i<BMSDATA;i++)
+    {
+        printf("Temperature value is %f and StateOfCharge value is %f\n",Temperature[i],Voltage[i]);
     }
 }
 
-void printtoconsoleVoltage(float Voltage[],numberOfSamples)
-{
-    for(int i=0;i<numberOfSamples;i++)
-    {
-        printf("Temperature value is %f\n",Voltage[i]);
-    }
-}
