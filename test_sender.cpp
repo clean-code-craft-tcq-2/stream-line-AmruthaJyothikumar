@@ -6,6 +6,7 @@
 
 TEST_CASE("Check whether data read success"){
   char *filename = "./BMS_Sender/VoltageTemperatureInput.txt";
+  int totalReadingsCaptured;
   float Temperature[20] = {0};
   float Voltage[20] = {0};
   totalReadingsCaptured = GetDatafromInputFile(filename,&Temperature[0],&Voltage[0]);
