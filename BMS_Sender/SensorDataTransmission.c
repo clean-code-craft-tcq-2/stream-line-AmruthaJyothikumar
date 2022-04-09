@@ -3,7 +3,7 @@
 #include <string.h>
 #include "SensorDataTransmission.h"
 
-#define BMSDATA 20
+
 float Temperature[BMSDATA] = {};
 float StateOfCharge[BMSDATA] = {};
 
@@ -39,4 +39,5 @@ int sendDataToConsole( float *Temperature, float *Voltage)
     {
         printf("Temperature value is %f and StateOfCharge value is %f\n",Temperature[i],Voltage[i]);
     }
+    return E_OK;
 }
