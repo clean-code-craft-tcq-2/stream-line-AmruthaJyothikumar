@@ -1,8 +1,6 @@
-typedef enum
-{
-	E_NOT_OK,
-	E_OK
-}DATASTATUS;
+#define BMSDATA 20
+#define E_OK 1
+#define E_NOT_OK 0
 
 extern int GetDatafromInputFile(char * filename, float *Temperature, float *Voltage);
 extern int isFileOpenSuccess(FILE *filePointer);
