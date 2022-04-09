@@ -3,6 +3,6 @@
 #define E_NOT_OK 0
 
 extern int GetDatafromInputFile(char * filename, float *Temperature, float *Voltage);
-extern int isFileOpenSuccess(FILE *filePointer);
+extern int CheckFileOpenSuccess(FILE *filePointer);
 extern int ReadDatafromInput(FILE *filePointer, float *Temperature, float *Voltage);
 extern int sendDataToConsole( float *Temperature, float *Voltage);
