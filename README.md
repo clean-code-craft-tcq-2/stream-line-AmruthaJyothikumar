@@ -75,3 +75,13 @@ This section lists the minimum functionality of the Sender and Receiver.
 ## Quality Parameters
 
 Setup the quality parameters of your project (duplication, complexity, coverage, warnings) using GitHub workflow yml files.
+
+## Design Approch
+1. Read BMS values from Voltage Sensor and Temperature sensor Input Data text.
+2. Test whether data is read succesfully.
+3. Check whether data is print to console sucessfully.
+
+## Design
+
+![Design](https://user-images.githubusercontent.com/90920630/167284610-06b4a293-b3a5-487d-a37f-650c27b60cf6.png)
+
